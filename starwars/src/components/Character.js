@@ -9,7 +9,11 @@ import React from "react"
   function StarWarsCharacter(props){
     const {onNewCharacter} = props
     const {onNewGender} = props
-    return <p> {onNewCharacter} Gender: {onNewGender} </p>
+    return (
+     
+    <p> {onNewCharacter} Gender: {onNewGender} </p>
+
+    )
  
   }
 

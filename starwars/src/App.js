@@ -4,14 +4,25 @@ import axios from "axios";
 import styled, { css } from "styled-components";
 import { StarWarsCharacter } from "./components/Character";
 
-const Wrapper = styled.section`
+
+
+const Wrapper = styled.div`
+
+  width:70%;
+
   padding: 1em;
-  background: #33ecff;
   margin: 2rem;
+  margin-left: 6rem;
   border: 5px solid black;
+
+    /* Adapt the colors based on primary prop */
+    background: ${props => props.primary ? "palevioletred" : "white"};
+    color: ${props => props.primary ? "white" : "palevioletred"};
+
 `;
 
 const Container = styled.div`
+width:100%
   text-align: center;
 `;
 
@@ -42,20 +53,20 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      {/* <StarWarsCharacter  onNewCharacter = {character.name}  /> */}
-
       {/* map through data here to return a character and pass data as props to character */}
       {character.map((arr) => {
         return (
           <Container>
-            <Wrapper>
+            <Wrapper primary>
               {" "}
               <StarWarsCharacter
                 onNewCharacter={arr.name}
                 onNewGender={arr.gender}
               />
             </Wrapper>
-          </Container>
+
+            </Container>
+         
         );
       })}
 
