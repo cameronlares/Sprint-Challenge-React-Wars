@@ -4,8 +4,10 @@ import axios from "axios";
 import styled, { css } from 'styled-components'
 
 const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
+  padding: 1em;
+  background: #33ECFF;
+  margin:2rem;
+  border: 5px solid black;
 `;
 
 const Container = styled.div`
@@ -29,8 +31,9 @@ const App = () => {
 
   function StarWarsCharacter(props){
     const {onNewCharacter} = props
-
-    return <p> {onNewCharacter} </p>
+    const {onNewGender} = props
+    return <p> {onNewCharacter} Gender: {onNewGender} </p>
+ 
   }
 
 
@@ -49,9 +52,9 @@ const App = () => {
       .then((response) => {
         setcharacter(response.data.results) ;
         let test = response.data.results;
-         character = test.map(arr=>{   // Adds Title       
-          return arr.name
-         })
+        //  character = test.map(arr=>{   // Adds Title       
+        //   return arr.name
+        //  })
          console.log(character) //
    
     
@@ -65,9 +68,25 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
- 
-<Wrapper>Hello</Wrapper>
-<StarWarsCharacter  onNewCharacter = {character.name}  />
+      {/* <StarWarsCharacter  onNewCharacter = {character.name}  /> */}
+
+
+      {/* map through data here to return a character and pass data as props to character */}
+
+      {character.map((arr) => {
+        
+  return (
+  <Wrapper> <StarWarsCharacter onNewCharacter={arr.name}  onNewGender = {arr.gender} />
+  </Wrapper>
+  )
+})}
+
+
+
+{  console.log(character)}
+
+
+
 
     </div>
   );
